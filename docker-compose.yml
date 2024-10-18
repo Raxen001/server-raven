@@ -1,11 +1,6 @@
 ---
 services:
 
-  watchtower:
-    image: containrrr/watchtower
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock
-
   # Media server
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
@@ -48,6 +43,19 @@ services:
     ports:
       - '7575:7575'
       - '80:7575'
+
+  # resolve cloudflare proxy
+  flaresolverr:
+    image: ghcr.io/flaresolverr/flaresolverr:latest
+    container_name: flaresolverr
+    environment:
+      - LOG_LEVEL=${LOG_LEVEL:-info}
+      - LOG_HTML=${LOG_HTML:-false}
+      - CAPTCHA_SOLVER=${CAPTCHA_SOLVER:-none}
+      - TZ=Asia/Kolkata
+    ports:
+      - "${PORT:-8191}:8191"
+    restart: unless-stopped
 
   # torrent client
   qbittorrent:
@@ -179,7 +187,7 @@ services:
     env_file:
       - .env
     ports:
-      - 2283:3001
+      - 2283:2283
     depends_on:
       - redis
       - database
