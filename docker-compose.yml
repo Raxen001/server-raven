@@ -22,12 +22,14 @@ services:
       - 8096:8096
       - 7359:7359/udp #optional
       - 1900:1900/udp #optional
-    runtime: nvidia
     deploy:
       resources:
         reservations:
           devices:
-            - capabilities: [gpu]
+            - driver: nvidia
+              count: 1
+              capabilities:
+                - gpu
     restart: unless-stopped
 
   # Home page
@@ -156,6 +158,18 @@ services:
     volumes:
       - /home/raven/.config/jellyseerr:/app/config
     restart: unless-stopped
+
+  # Password Manager
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      DOMAIN: "https://vw.domain.tld"
+    volumes:
+      - ~/password/:/data/
+    ports:
+      - 7777:80
 
   # dashboard for performance
   # dash:
