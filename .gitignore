@@ -1,1 +1,3 @@
 scripts/duckdns.sh
+.env
+.db.env
