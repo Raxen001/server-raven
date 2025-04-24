@@ -1,0 +1,47 @@
+services:
+
+  # Media server
+  jellyfin:
+    image: lscr.io/linuxserver/jellyfin:latest
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+      - NVIDIA_VISIBLE_DEVICES=all
+    volumes:
+      - ~/.config/jellyfin/:/config
+      - ~/.cache/jellyfin/:/cache
+      - ~/Media/movies:/data/movie
+      - ~/Media/movies2:/data/movie2
+      - ~/Media/tvshows:/data/tv-series
+      - ~/Media/anime:/data/anime
+      - ~/Media/music:/data/music
+    ports:
+      - 8096:8096
+      - 7359:7359/udp
+      - 1900:1900/udp
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia # transcoding using nvidia
+              count: 1
+              capabilities:
+                - gpu
+    restart: unless-stopped
+
+  # Frontend for requesting movies
+  jellyseerr:
+    image: fallenbagel/jellyseerr:latest
+    container_name: jellyseerr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - LOG_LEVEL=debug
+      - TZ=Asia/Kolkata
+      - PORT=5055 #optional
+    ports:
+      - 5055:5055
+    volumes:
+      - ~/.config/jellyseerr:/app/config
+    restart: unless-stopped

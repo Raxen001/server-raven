@@ -1,0 +1,33 @@
+#!/usr/bin/env bash
+
+compose_file=()
+
+location="$HOME/server/composers/"
+cd $location
+
+case {"$1"} in
+        up)
+                up=true;;
+        down)
+                down=true;;
+        update)
+                update=true;;
+esac
+
+find_compose_files() {
+        for folder in ./*; do
+                if [ ! -d "$folder" ]; then
+                        continue;
+                fi
+                if [ ! -f "$folder/docker-compose.yml" ]; then
+                        continue;
+                fi
+                compose_file+=("$folder/docker-compose.yml")
+        done
+}
+
+run() {
+        find_compose_files
+}
+
+run
