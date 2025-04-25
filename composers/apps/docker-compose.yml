@@ -30,3 +30,8 @@ services:
         - USER_EMAIL=raxen001@tutamail.com
         - VERIFY_OWNERSHIP="TXT-FILE-CONTENT"
     restart: unless-stopped
+
+  watchtower:
+    image: containrrr/watchtower
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock
