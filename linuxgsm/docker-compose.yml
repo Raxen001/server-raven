@@ -1,0 +1,18 @@
+services:
+  linuxgsm-minecraft:
+    image: gameservermanagers/gameserver:pmc
+    restart: unless-stopped
+    volumes:
+      - ~/linuxgsm/cs:/data
+    ports:
+      - '25565:25565'
+      - '25575:25575'
+    network_mode: host
+
+  linuxgsm-killingfloor2:
+    image: gameservermanagers/gameserver:kf2
+    restart: unless-stopped
+    volumes:
+      - ~/linuxgsm/kf2:/data
+    network_mode: host
+
