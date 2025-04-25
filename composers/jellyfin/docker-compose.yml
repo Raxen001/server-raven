@@ -30,6 +30,15 @@ services:
                 - gpu
     restart: unless-stopped
 
+  # frotnend
+  fladder:
+    image: ghcr.io/donutware/fladder:latest
+    ports:
+      - 8097:80
+    # environment:
+    #   - BASE_URL=https://server-url #OPTIONAL: Locks the Fladder front-end to a certain jellyfin server
+
+
   # Frontend for requesting movies
   jellyseerr:
     image: fallenbagel/jellyseerr:latest
