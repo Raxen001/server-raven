@@ -14,6 +14,7 @@ services:
       - SECRET_ENCRYPTION_KEY=18a6455eaceffca45eb7ab8e824f99de5352b1611b94c985d866e3b92650a923
     ports:
       - '80:7575'
+      - '7575:7575'
     restart: unless-stopped
 
   #radarr - for movies

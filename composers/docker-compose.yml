@@ -4,3 +4,4 @@ include:
   - ./immich/docker-compose.yml
   - ./firefly/docker-compose.yml
   - ./jellyfin/docker-compose.yml
+  # - ./caddy/docker-compose.yml
