@@ -1,13 +1,16 @@
 services:
-  linuxgsm-minecraft:
-    image: gameservermanagers/gameserver:pmc
-    restart: unless-stopped
-    volumes:
-      - ~/linuxgsm/cs:/data
+  mc:
+    image: itzg/minecraft-server:latest
+    tty: true
+    stdin_open: true
     ports:
-      - '25565:25565'
-      - '25575:25575'
-    network_mode: host
+      - "25565:25565"
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      PAPER_CHANNEL: "experimental"
+    volumes:
+      - "~/linuxgsm/minecraft:/data"
 
   linuxgsm-killingfloor2:
     image: gameservermanagers/gameserver:kf2
