@@ -12,6 +12,8 @@ services:
       - ./conf:/etc/caddy
       - caddy_data:/data
       - caddy_config:/config
+    environment:
+      - "DOMAIN=raxen001.xyz"
 
 volumes:
   caddy_data:

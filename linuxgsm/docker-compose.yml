@@ -9,13 +9,14 @@ services:
       EULA: "TRUE"
       TYPE: "PAPER"
       PAPER_CHANNEL: "experimental"
+      MEMORY: 4G
     volumes:
       - "~/linuxgsm/minecraft:/data"
 
-  linuxgsm-killingfloor2:
-    image: gameservermanagers/gameserver:kf2
-    restart: unless-stopped
-    volumes:
-      - ~/linuxgsm/kf2:/data
-    network_mode: host
+  # linuxgsm-killingfloor2:
+  #   image: gameservermanagers/gameserver:kf2
+  #   restart: unless-stopped
+  #   volumes:
+  #     - ~/linuxgsm/kf2:/data
+  #   network_mode: host
 
