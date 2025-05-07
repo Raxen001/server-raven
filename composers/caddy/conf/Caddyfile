@@ -43,5 +43,5 @@ navidrome.{$DOMAIN} {
 }
 
 feishin.{$DOMAIN} {
-    reverse_proxy http://feishin:4533
+    reverse_proxy http://feishin:9180
 }
