@@ -9,9 +9,9 @@ services:
       EULA: "TRUE"
       TYPE: "PAPER"
       PAPER_CHANNEL: "experimental"
-      MEMORY: 4G
+      MEMORY: 8G
     volumes:
-      - "~/linuxgsm/minecraft:/data"
+      - "/opt/backup/linuxgsm/minecraft:/data"
 
   # linuxgsm-killingfloor2:
   #   image: gameservermanagers/gameserver:kf2
