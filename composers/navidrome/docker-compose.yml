@@ -1,15 +1,14 @@
 services:
   navidrome:
     image: deluan/navidrome:latest
-    # user: 1000:1000
     ports:
       - "4533:4533"
     restart: unless-stopped
-    # environment:
-    #   - PUID=1000
-    #   - PGID=1000
+    environment:
+      - PUID=1000
+      - PGID=1000
     volumes:
-      - "~/.config/navidrome/:/data"
+      - navidrome:/data
       - "~/Media/music/:/music:ro"
 
   feishin:
@@ -18,10 +17,13 @@ services:
           # - SERVER_NAME=jellyfin 
           # - SERVER_LOCK=false
           # - SERVER_TYPE=jellyfin # navidrome also works
-          - SERVER_URL= # http://raven.raxen001.xyz:4533
+          # - SERVER_URL= # http://raven.raxen001.xyz:4533
           - PUID=1000
           - PGID=1000
           - TZ=Asia/Kolkata
       ports:
           - 9180:9180
       restart: unless-stopped
+
+volumes:
+  navidrome:
