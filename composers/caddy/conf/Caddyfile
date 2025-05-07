@@ -7,7 +7,11 @@ torrent.{$DOMAIN} {
 }
 
 speed.{$DOMAIN} {
-    reverse_proxy http://speedtest:3000
+    reverse_proxy http://speedtest:3000 {
+        request_buffers 35MiB
+        response_buffers 35MiB
+        flush_interval -1 
+    }
 }
 
 home.{$DOMAIN} {
