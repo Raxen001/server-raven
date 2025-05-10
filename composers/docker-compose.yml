@@ -6,4 +6,5 @@ include:
   - ./jellyfin/docker-compose.yml
   - ./navidrome/docker-compose.yml
   - ./vaultwarden/docker-compose.yml
+  - ./linkwarden/docker-compose.yml
   - ./caddy/docker-compose.yml

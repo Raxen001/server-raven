@@ -9,7 +9,7 @@ services:
       EULA: "TRUE"
       TYPE: "PAPER"
       PAPER_CHANNEL: "experimental"
-      MEMORY: 8G
+      MEMORY: 5G
     volumes:
       - "/opt/backup/linuxgsm/minecraft:/data"
 

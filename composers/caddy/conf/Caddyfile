@@ -49,3 +49,6 @@ feishin.{$DOMAIN} {
 vault.{$DOMAIN} {
     reverse_proxy http://vaultwarden:80
 }
+link.{$DOMAIN} {
+    reverse_proxy http://linkwarden:3000
+}
