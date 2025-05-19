@@ -10,7 +10,7 @@ speed.{$DOMAIN} {
     reverse_proxy http://speedtest:3000 {
         request_buffers 35MiB
         response_buffers 35MiB
-        flush_interval -1 
+        flush_interval -1
     }
 }
 
@@ -49,6 +49,15 @@ feishin.{$DOMAIN} {
 vault.{$DOMAIN} {
     reverse_proxy http://vaultwarden:80
 }
+
 link.{$DOMAIN} {
     reverse_proxy http://linkwarden:3000
+}
+
+jellyseer.{$DOMAIN} {
+    reverse_proxy http://jellyseerr:5055
+}
+
+money.{$DOMAIN} {
+    reverse_proxy http://firefly_iii_core:8080
 }

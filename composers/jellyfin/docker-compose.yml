@@ -6,6 +6,7 @@ services:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Kolkata
+      - LOG_LEVEL=debug
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
       - ~/.config/jellyfin/:/config

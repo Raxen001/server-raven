@@ -9,9 +9,23 @@ services:
       EULA: "TRUE"
       TYPE: "PAPER"
       PAPER_CHANNEL: "experimental"
-      MEMORY: 5G
+      MEMORY: 4G
     volumes:
-      - "/opt/backup/linuxgsm/minecraft:/data"
+      - "/opt/backup/linuxgsm/new_world:/data"
+
+  mc2:
+    image: itzg/minecraft-server:latest
+    tty: true
+    stdin_open: true
+    ports:
+      - "25566:25565"
+    environment:
+      EULA: "TRUE"
+      TYPE: "PAPER"
+      PAPER_CHANNEL: "experimental"
+      MEMORY: 2G
+    volumes:
+      - "/opt/backup/linuxgsm/old_world:/data"
 
   # linuxgsm-killingfloor2:
   #   image: gameservermanagers/gameserver:kf2
