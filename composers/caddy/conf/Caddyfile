@@ -18,21 +18,21 @@ home.{$DOMAIN} {
     reverse_proxy http://homarr:7575
 }
 
-radarr.{$DOMAIN} {
-    reverse_proxy http://radarr:7575
-}
-
-sonarr.{$DOMAIN} {
-    reverse_proxy http://sonarr:8989
-}
-
-lidarr.{$DOMAIN} {
-    reverse_proxy http://lidarr:8686
-}
-
-prowlarr.{$DOMAIN} {
-    reverse_proxy http://prowlarr:9696
-}
+# radarr.{$DOMAIN} {
+#     reverse_proxy http://radarr:7575
+# }
+# 
+# sonarr.{$DOMAIN} {
+#     reverse_proxy http://sonarr:8989
+# }
+# 
+# lidarr.{$DOMAIN} {
+#     reverse_proxy http://lidarr:8686
+# }
+# 
+# prowlarr.{$DOMAIN} {
+#     reverse_proxy http://prowlarr:9696
+# }
 
 photos.{$DOMAIN} {
     reverse_proxy http://immich-server:2283
@@ -48,10 +48,6 @@ feishin.{$DOMAIN} {
 
 vault.{$DOMAIN} {
     reverse_proxy http://vaultwarden:80
-}
-
-link.{$DOMAIN} {
-    reverse_proxy http://linkwarden:3000
 }
 
 jellyseer.{$DOMAIN} {
