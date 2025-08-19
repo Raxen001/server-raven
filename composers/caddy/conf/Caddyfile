@@ -1,3 +1,11 @@
+{
+    log {
+        output file /etc/caddy/caddy-log.json {
+                mode 444
+                roll_uncompressed
+        }
+    }
+}
 movie.{$DOMAIN} {
     reverse_proxy http://jellyfin:8096
 }
@@ -21,15 +29,15 @@ home.{$DOMAIN} {
 # radarr.{$DOMAIN} {
 #     reverse_proxy http://radarr:7575
 # }
-# 
+#
 # sonarr.{$DOMAIN} {
 #     reverse_proxy http://sonarr:8989
 # }
-# 
+#
 # lidarr.{$DOMAIN} {
 #     reverse_proxy http://lidarr:8686
 # }
-# 
+#
 # prowlarr.{$DOMAIN} {
 #     reverse_proxy http://prowlarr:9696
 # }
@@ -56,4 +64,14 @@ jellyseer.{$DOMAIN} {
 
 money.{$DOMAIN} {
     reverse_proxy http://firefly_iii_core:8080
+}
+
+paper.{$DOMAIN} {
+    reverse_proxy http://paperless:8000 {
+        header_down Referrer-Policy "strict-origin-when-cross-origin"
+    }
+}
+
+netdata.{$DOMAIN} {
+  reverse_proxy host.docker.internal:19999
 }

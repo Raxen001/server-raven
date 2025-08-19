@@ -7,3 +7,5 @@ include:
   - ./navidrome/docker-compose.yml
   - ./vaultwarden/docker-compose.yml
   - ./caddy/docker-compose.yml
+  - ./paperless/docker-compose-mariadb-tika.yml
+  # - ./netdata/docker-compose.yml

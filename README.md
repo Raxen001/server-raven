@@ -7,3 +7,9 @@ Enable nvidia persistanced
 ```bash
 sudo systemctl enable --now nvidia-persistenced.service
 ```
+
+# Access netdata
+
+```bash
+sudo ufw allow 19999 comment 'Add netdata to firewall rule'
+```

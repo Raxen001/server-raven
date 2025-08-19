@@ -1,3 +1,4 @@
 scripts/duckdns.sh
 .env
 .db.env
+caddy-log.json
