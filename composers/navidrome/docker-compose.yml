@@ -15,10 +15,10 @@ services:
   feishin:
       image: 'ghcr.io/jeffvli/feishin:latest'
       environment:
-          # - SERVER_NAME=jellyfin 
-          # - SERVER_LOCK=false
-          # - SERVER_TYPE=jellyfin # navidrome also works
-          # - SERVER_URL= # http://raven.raxen001.xyz:4533
+          - SERVER_NAME=raven
+          - SERVER_LOCK=false
+          - SERVER_TYPE=navidrome # navidrome also works
+          - SERVER_URL=https://navidrome.raxen001.xyz
           - PUID=1000
           - PGID=1000
           - TZ=Asia/Kolkata
