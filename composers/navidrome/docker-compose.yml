@@ -1,16 +1,15 @@
 services:
   navidrome:
     image: deluan/navidrome:latest
-    ports:
-      - "4533:4533"
-    restart: unless-stopped
-    env_file: .env
     environment:
       - PUID=1000
       - PGID=1000
     volumes:
-      - navidrome:/data
-      - "~/Media/music/:/music:ro"
+      - ~/data/navidrome:/data
+      - "/hdd/Media/music/:/music:ro"
+    ports:
+      - "4533:4533"
+    restart: unless-stopped
 
   feishin:
       image: 'ghcr.io/jeffvli/feishin:latest'
@@ -25,6 +24,3 @@ services:
       ports:
           - 9180:9180
       restart: unless-stopped
-
-volumes:
-  navidrome:

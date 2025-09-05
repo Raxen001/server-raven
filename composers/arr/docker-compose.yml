@@ -4,16 +4,15 @@ services:
   homarr:
     container_name: homarr
     image: ghcr.io/homarr-labs/homarr:latest
-    volumes:
-      - /var/run/docker.sock:/var/run/docker.sock 
-      - ~/.config/homarr/appdata:/appdata
-      - ~/.config/homarr/configs:/app/data/configs
-      - ~/.config/homarr/icons:/app/public/icons
-      - ~/.config/homarr/data:/data
     environment:
       - SECRET_ENCRYPTION_KEY=18a6455eaceffca45eb7ab8e824f99de5352b1611b94c985d866e3b92650a923
+    volumes:
+      - /var/run/docker.sock:/var/run/docker.sock 
+      - ~/data/homarr/appdata:/appdata
+      - ~/data/homarr/configs:/app/data/configs
+      - ~/data/homarr/icons:/app/public/icons
+      - ~/data/homarr/data:/data
     ports:
-      # - '80:7575'
       - '7575:7575'
     restart: unless-stopped
 
@@ -26,10 +25,9 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - ~/.config/radarr/:/config
-      - ~/Media/movies:/movie
-      - ~/Media/movies2:/movie2
-      - ~/Downloads/:/downloads/ #optional
+      - ~/data/radarr/:/config
+      - /hdd/Media:/Media
+      - /hdd/Downloads/:/downloads/
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -43,10 +41,9 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - ~/.config/sonarr:/config
-      - ~/Media/tvshows:/tv-series
-      - ~/Media/anime:/anime
-      - ~/Downloads:/downloads #optional
+      - ~/data/sonarr:/config
+      - /hdd/Media:/Media
+      - /hdd/Downloads:/downloads
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -60,9 +57,9 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - ~/.config/lidarr:/config
-      - ~/Media/music/:/music/
-      - ~/Downloads/:/downloads/
+      - ~/data/lidarr:/config
+      - /hdd/Media/:/Media/
+      - /hdd/Downloads/:/downloads/
     ports:
       - 8686:8686
     restart: unless-stopped
@@ -76,7 +73,9 @@ services:
       - PGID=1000
       - TZ=Asia/Kolkata
     volumes:
-      - ~/.config/prowlarr/:/config
+      - ~/data/prowlarr/:/config
+      - /hdd/Media/:/Media/
+      - /hdd/Downloads/:/downloads/
     ports:
       - 9696:9696
     restart: unless-stopped

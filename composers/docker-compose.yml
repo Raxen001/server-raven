@@ -1,12 +1,12 @@
 include:
-  - ./arr/docker-compose.yml
   - ./apps/docker-compose.yml
   - ./immich/docker-compose.yml
   - ./firefly/docker-compose.yml
-  - ./jellyfin/docker-compose.yml
-  - ./navidrome/docker-compose.yml
   - ./vaultwarden/docker-compose.yml
-  - ./caddy/docker-compose.yml
+  - ./jellyfin/docker-compose.yml
+  - ./arr/docker-compose.yml
+  - ./navidrome/docker-compose.yml
   - ./paperless/docker-compose-mariadb-tika.yml
+  - ./caddy/docker-compose.yml
   # - ./soulseek/docker-compose.yml
   # - ./netdata/docker-compose.yml

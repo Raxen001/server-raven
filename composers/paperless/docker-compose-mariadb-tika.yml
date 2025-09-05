@@ -60,8 +60,8 @@ services:
     volumes:
       - data:/usr/src/paperless/data
       - media:/usr/src/paperless/media
-      - ~/Documents/paper/export:/usr/src/paperless/export
-      - ~/Documents/paper/consume:/usr/src/paperless/consume
+      - /hdd/Documents/paper/export:/usr/src/paperless/export
+      - /hdd/Documents/paper/consume:/usr/src/paperless/consume
     env_file: docker-compose.env
     environment:
       PAPERLESS_REDIS: redis://broker:6379

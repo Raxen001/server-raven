@@ -10,9 +10,9 @@ services:
       - WEBUI_PORT=8080
       - TORRENTING_PORT=6881
     volumes:
-      - ~/.config/qbittorrent/appdata:/config
-      - ~/Downloads:/downloads
-      - ~/Media:/Media
+      - ~/data/qbittorrent/:/config
+      - /hdd/Downloads:/downloads
+      - /hdd/Media:/Media
     ports:
       - 8080:8080
       - 6881:6881
@@ -21,14 +21,14 @@ services:
 
   speedtest:
     image: openspeedtest/latest 
-    ports:
-         - '8787:3000'
-         # - '8788:3001'
     environment:
         - ENABLE_LETSENCRYPT=False
         - DOMAIN_NAME=speedtest.yourdomain.com
         - USER_EMAIL=raxen001@tutamail.com
         - VERIFY_OWNERSHIP="TXT-FILE-CONTENT"
+    ports:
+         - '8787:3000'
+         - '8788:3001'
     restart: unless-stopped
 
   watchtower:

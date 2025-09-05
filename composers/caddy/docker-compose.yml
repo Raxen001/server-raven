@@ -1,21 +1,21 @@
 services:
   caddy:
     image: caddy:latest
-    restart: unless-stopped
     cap_add:
       - NET_ADMIN
-    ports:
-      - "80:80"
-      - "443:443"
-      - "443:443/udp"
+    environment:
+      - "DOMAIN=raxen001.xyz"
     volumes:
       - ./conf:/etc/caddy
       - caddy_data:/data
       - caddy_config:/config
-    environment:
-      - "DOMAIN=raxen001.xyz"
+    ports:
+      - "80:80"
+      - "443:443"
+      - "443:443/udp"
     extra_hosts:
       - "host.docker.internal:192.168.1.4"
+    restart: unless-stopped
 
 volumes:
   caddy_data:

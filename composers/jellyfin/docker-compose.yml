@@ -1,4 +1,5 @@
 services:
+
   # Media server
   jellyfin:
     image: lscr.io/linuxserver/jellyfin:latest
@@ -9,13 +10,9 @@ services:
       - LOG_LEVEL=debug
       - NVIDIA_VISIBLE_DEVICES=all
     volumes:
-      - ~/.config/jellyfin/:/config
+      - ~/data/jellyfin/:/config
       - ~/.cache/jellyfin/:/cache
-      - ~/Media/movies:/data/movie
-      - ~/Media/movies2:/data/movie2
-      - ~/Media/tvshows:/data/tv-series
-      - ~/Media/anime:/data/anime
-      - ~/Media/music:/data/music
+      - /hdd/Media/:/Media
     ports:
       - 8096:8096
       - 7359:7359/udp
@@ -24,7 +21,7 @@ services:
       resources:
         reservations:
           devices:
-            - driver: nvidia # transcoding using nvidia
+            - driver: nvidia
               count: 1
               capabilities:
                 - gpu
@@ -40,8 +37,8 @@ services:
       - LOG_LEVEL=debug
       - TZ=Asia/Kolkata
       - PORT=5055
+    volumes:
+      - ~/data/jellyseerr:/app/config
     ports:
       - 5055:5055
-    volumes:
-      - ~/.config/jellyseerr:/app/config
     restart: unless-stopped

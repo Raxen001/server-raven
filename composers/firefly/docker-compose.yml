@@ -3,24 +3,20 @@ services:
     image: fireflyiii/core:latest
     hostname: fireflyiii
     container_name: firefly_iii_core
-    restart: always
     volumes:
       - firefly_iii_upload:/var/www/html/storage/upload
     env_file: .env
-    # networks:
-    #   - firefly_iii
     ports:
       - 8888:8080
     depends_on:
       - db
+    restart: always
   db:
     image: mariadb:lts
     hostname: db
     container_name: firefly_iii_db
     restart: always
     env_file: .db.env
-    # networks:
-    #   - firefly_iii
     volumes:
       - firefly_iii_db:/var/lib/mysql
   cron:
@@ -38,13 +34,7 @@ services:
       | echo \"0 3 * * * wget -qO- http://fireflyiii:8080/api/v1/cron/aac56dacafafb701724f0493738536ba;echo\" 
       | crontab - 
       && crond -f -L /dev/stdout"
-    # networks:
-    #   - firefly_iii
 
 volumes:
    firefly_iii_upload:
    firefly_iii_db:
-
-# networks:
-#   firefly_iii:
-#     driver: bridge
