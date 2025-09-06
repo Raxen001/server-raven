@@ -31,6 +31,18 @@ services:
          - '8788:3001'
     restart: unless-stopped
 
+  excalidraw:
+    image: excalidraw/excalidraw:latest
+    container_name: excalidraw
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    ports:
+      - "5000:80"
+    restart: unless-stopped
+
+
   watchtower:
     image: containrrr/watchtower
     volumes:
