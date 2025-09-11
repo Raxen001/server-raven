@@ -9,4 +9,5 @@ include:
   - ./rss/docker-compose.yml
   - ./paperless/docker-compose-mariadb-tika.yml
   - ./soulseek/docker-compose.yml
+  - ./beszel/docker-compose.yml
   - ./caddy/docker-compose.yml
