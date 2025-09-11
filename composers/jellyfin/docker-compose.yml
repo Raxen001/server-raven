@@ -39,6 +39,10 @@ services:
       - PORT=5055
     volumes:
       - ~/data/jellyseerr:/app/config
+    dns:
+      - 1.1.1.1
+      - 8.8.8.8
+      - 8.8.4.4
     ports:
       - 5055:5055
     restart: unless-stopped

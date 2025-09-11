@@ -49,6 +49,10 @@ feishin.{$DOMAIN} {
 	reverse_proxy http://feishin:9180
 }
 
+soulseek.{$DOMAIN} {
+	reverse_proxy http://soulseek:5030
+}
+
 vault.{$DOMAIN} {
 	reverse_proxy http://vaultwarden:80
 }

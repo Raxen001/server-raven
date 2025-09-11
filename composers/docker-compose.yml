@@ -8,6 +8,5 @@ include:
   - ./navidrome/docker-compose.yml
   - ./rss/docker-compose.yml
   - ./paperless/docker-compose-mariadb-tika.yml
+  - ./soulseek/docker-compose.yml
   - ./caddy/docker-compose.yml
-  # - ./soulseek/docker-compose.yml
-  # - ./netdata/docker-compose.yml

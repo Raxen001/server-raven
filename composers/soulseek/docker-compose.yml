@@ -4,14 +4,16 @@ services:
     container_name: slskd
     environment:
       - SLSKD_REMOTE_CONFIGURATION=true
-      - "SLSKD_SHARED_DIR=/Media;"
-      - SLSKD_SLSK_USERNAME=raven
-      - SLSKD_SLSK_PASSWORD=subsoil-hammock-hardy-hardly-untaxed-consuming
+      - "SLSKD_SHARED_DIR=/Media" # Media direcotreis "/Media;/tv-shows" for multiple
+      - "SLSKD_DOWNLOADS_DIR=/Media/music/soulseek/"
+      - "SLSKD_INCOMPLETE_DIR=/Downloads/soulseek/incomplete/"
     volumes:
-      - /hdd/Media/music/soulseek/:/app
-      - /hdd/Media/:/media
+      - ~/data/soulseek/:/app
+      - /hdd/Media/:/Media
+      - /hdd/Downloads/:/Downloads/
     ports:
-      - "5030:5030"
-      - "5031:5031"
-      - "50300:50300"
+      - "5030:5030" # HTTP
+      # - "5031:5031" # HTTPS
+      # - "50300:50300" # soulseek port
+      - "2234:2234" # soulseek port
     restart: unless-stopped
