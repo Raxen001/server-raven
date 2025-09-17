@@ -1,0 +1,32 @@
+services:
+  suwayomi:
+    image: ghcr.io/suwayomi/suwayomi-server:preview
+    user: 1000:1000
+    environment:
+      - TZ=Asia/Kolkata
+      - FLARESOLVERR_ENABLED=true
+      - FLARESOLVERR_URL=http://flaresolverr:8191
+      - DATABASE_TYPE=POSTGRESQL
+      - DATABASE_URL=postgresql://suwayomi_postgresql:5432/${POSTGRES_DB}
+      - DATABASE_USERNAME=${POSTGRES_USER}
+      - DATABASE_PASSWORD=${POSTGRES_PASSWORD}
+      - EXTENSION_REPOS=["https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"]
+      - AUTH_MODE=${AUTH_MODE} 
+    volumes:
+      - ~/data/suwayomi/data:/home/suwayomi/.local/share/Tachidesk
+      - /hdd/Media/manga/:/home/suwayomi/.local/share/Tachidesk/downloads
+    ports:
+      - "4567:4567"
+    restart: on-failure:3
+
+  suwayomi_postgresql:
+    container_name: postgresql
+    image: postgres:17.6-alpine
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+      PGDATA: /data/postgres
+      POSTGRES_DB: ${POSTGRES_DB}
+    volumes:
+      - ~/data/suwayomi/db/:/data/postgres
+    restart: unless-stopped

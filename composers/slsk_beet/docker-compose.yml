@@ -9,7 +9,7 @@ services:
       - "SLSKD_INCOMPLETE_DIR=/Downloads/soulseek/incomplete/"
     volumes:
       - ~/data/soulseek/:/app
-      - /hdd/Media/:/Media
+      - /hdd/Media/music/:/Media
       - /hdd/Downloads/:/Downloads/
     ports:
       - "5030:5030" # HTTP

@@ -73,6 +73,10 @@ beszel.{$DOMAIN} {
 	reverse_proxy http://beszel:8090
 }
 
+manga.{$DOMAIN} {
+	reverse_proxy http://suwayomi:4567
+}
+
 paper.{$DOMAIN} {
 	reverse_proxy http://paperless:8000 {
 		header_down Referrer-Policy "strict-origin-when-cross-origin"

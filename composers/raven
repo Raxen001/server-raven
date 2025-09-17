@@ -1,33 +1,75 @@
 #!/usr/bin/env bash
 
-compose_file=()
+# author: Raxen001
+# url: https://raxen001.xyz
+#
 
-location="$HOME/server/composers/"
-cd $location
+SERVER_COMPOSE_PATH="$HOME"/server/composers/
+cd $SERVER_COMPOSE_PATH
 
-case {"$1"} in
-        up)
-                up=true;;
-        down)
-                down=true;;
-        update)
-                update=true;;
-esac
-
-find_compose_files() {
-        for folder in ./*; do
-                if [ ! -d "$folder" ]; then
-                        continue;
-                fi
-                if [ ! -f "$folder/docker-compose.yml" ]; then
-                        continue;
-                fi
-                compose_file+=("$folder/docker-compose.yml")
-        done
+main() {
+    echo "Current Path: "`pwd`
+    case "$1" in
+            start)
+                    start_docker
+                    ;;
+            restart)
+                    echo "[Restarting Docker Compose]"
+                    restart_docker
+                    ;;
+            update)
+                    echo "[Updating docker]"
+                    update_docker
+                    ;;
+            down)
+                    stop_docker
+                    ;;
+            prune)
+                    system_prune
+                    ;;
+            *)
+                help;;
+    esac
 }
 
-run() {
-        find_compose_files
+start_docker() {
+    docker compose up -d --remove-orphans
 }
 
-run
+restart_docker() {
+    docker compose down
+    start_docker
+}
+
+update_docker() {
+    docker compose down
+    docker compose pull
+    docker compose up -d --remove-orphans
+}
+
+stop_docker() {
+    docker compose down
+}
+
+system_prune() {
+    docker system prune
+}
+
+help() {
+    echo "~:RAVEN:~"
+    echo "   .----."
+    echo "   |C>_ |"
+    echo " __|____|__"
+    echo "|  ______--|"
+    echo "\`-/.::::.\-'a"
+    echo "\`--------'"
+    printf "\n\n"
+
+    echo "help: "
+    printf "\tstart  \t\tstart docker compose\n"
+    printf "\trestart \trestart docker compose\n"
+    printf "\tdown \t\tstop docker compose\n"
+    printf "\tprune \t\tdelete stopped containers [!CAUTION]\n"
+}
+
+main $1
