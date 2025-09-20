@@ -42,3 +42,7 @@ password=<password> \
 The systemd service file should have the user and group ddclient
 the `/etc/ddclient/ddclient` should be owned by ddclient.
 the `/run/pid/ddclient/ddclient.pid` should be owned by root.
+
+## beets
+
+Add `lyrics` to the `plugins` key in the `beets.conf`

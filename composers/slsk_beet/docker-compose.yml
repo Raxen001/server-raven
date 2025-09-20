@@ -27,6 +27,7 @@ services:
       - TZ=Asia/Kolkata
       - DOCKER_MODS=linuxserver/mods:universal-package-install
       - INSTALL_PIP_PACKAGES=beets[lyrics]
+      - INSTALL_PACKAGES=neovim
     volumes:
       - ~/data/beets/:/config/
       - /hdd/Media/music/:/music/

@@ -27,6 +27,9 @@ main() {
             prune)
                     system_prune
                     ;;
+            logs)
+                logs $2
+                ;;
             *)
                 help;;
     esac
@@ -55,6 +58,15 @@ system_prune() {
     docker system prune
 }
 
+logs(){
+    if [ -n "$1" ]; then
+        docker compose logs -f "$1"
+    else 
+        docker compose logs -f
+    fi
+
+}
+
 help() {
     echo "~:RAVEN:~"
     echo "   .----."
@@ -72,4 +84,4 @@ help() {
     printf "\tprune \t\tdelete stopped containers [!CAUTION]\n"
 }
 
-main $1
+main $@
