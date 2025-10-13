@@ -13,6 +13,7 @@ services:
       # - ADMIN_PASSWORD=test123
     ports:
       - "9191:8080"
+    restart: unless-stopped
 
   miniflux-db:
     image: postgres:17-alpine
@@ -22,6 +23,7 @@ services:
       - POSTGRES_DB=miniflux
     volumes:
       - miniflux-db:/var/lib/postgresql/data
+    restart: unless-stopped
     healthcheck:
       test: ["CMD", "pg_isready", "-U", "miniflux"]
       interval: 10s

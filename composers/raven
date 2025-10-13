@@ -15,7 +15,7 @@ main() {
                     ;;
             restart)
                     echo "[Restarting Docker Compose]"
-                    restart_docker
+                    restart_docker $2
                     ;;
             update)
                     echo "[Updating docker]"
@@ -40,8 +40,14 @@ start_docker() {
 }
 
 restart_docker() {
-    docker compose down
-    start_docker
+
+    if [ -n "$1" ]; then
+        docker compose down "$1"
+        start_docker
+    else 
+        docker compose down
+        start_docker
+    fi
 }
 
 update_docker() {
