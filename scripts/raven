@@ -27,6 +27,9 @@ main() {
             prune)
                     system_prune
                     ;;
+            beets)
+                beets
+                ;;
             logs)
                 logs $2
                 ;;
@@ -62,6 +65,10 @@ stop_docker() {
 
 system_prune() {
     docker system prune
+}
+
+beets() {
+    docker compose exec -it beets bash
 }
 
 logs(){
