@@ -30,6 +30,9 @@ main() {
             beets)
                 beets
                 ;;
+            status)
+                status
+                ;;
             logs)
                 logs $2
                 ;;
@@ -69,6 +72,10 @@ system_prune() {
 
 beets() {
     docker compose exec -it beets bash
+}
+
+status(){
+    docker compose ps --format='table {{.Names}}\t{{.Status}}\t{{.Ports}}'
 }
 
 logs(){

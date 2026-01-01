@@ -80,6 +80,21 @@ services:
       - 9696:9696
     restart: unless-stopped
 
+  # subtitle
+  bazarr:
+    image: lscr.io/linuxserver/bazarr:latest
+    container_name: bazarr
+    environment:
+      - PUID=1000
+      - PGID=1000
+      - TZ=Asia/Kolkata
+    volumes:
+      - ~/data/bazarr/config:/config
+      - /hdd/Media/:/Media
+    ports:
+      - 6767:6767
+    restart: unless-stopped
+
   # resolve cloudflare proxy
   flaresolverr:
     image: ghcr.io/flaresolverr/flaresolverr:latest
