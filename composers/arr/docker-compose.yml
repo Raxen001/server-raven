@@ -26,8 +26,7 @@ services:
       - TZ=Asia/Kolkata
     volumes:
       - ~/data/radarr/:/config
-      - /hdd/Media:/Media
-      - /hdd/Downloads/:/downloads/
+      - /hdd/:/hdd/
     ports:
       - 7878:7878
     restart: unless-stopped
@@ -42,8 +41,7 @@ services:
       - TZ=Asia/Kolkata
     volumes:
       - ~/data/sonarr:/config
-      - /hdd/Media:/Media
-      - /hdd/Downloads:/downloads
+      - /hdd/:/hdd/
     ports:
       - 8989:8989
     restart: unless-stopped
@@ -58,8 +56,7 @@ services:
       - TZ=Asia/Kolkata
     volumes:
       - ~/data/lidarr:/config
-      - /hdd/Media/:/Media/
-      - /hdd/Downloads/:/downloads/
+      - /hdd/:/hdd/
     ports:
       - 8686:8686
     restart: unless-stopped
@@ -74,8 +71,7 @@ services:
       - TZ=Asia/Kolkata
     volumes:
       - ~/data/prowlarr/:/config
-      - /hdd/Media/:/Media/
-      - /hdd/Downloads/:/downloads/
+      - /hdd/:/hdd/
     ports:
       - 9696:9696
     restart: unless-stopped
@@ -90,7 +86,7 @@ services:
       - TZ=Asia/Kolkata
     volumes:
       - ~/data/bazarr/config:/config
-      - /hdd/Media/:/Media
+      - /hdd/:/hdd/
     ports:
       - 6767:6767
     restart: unless-stopped
@@ -107,3 +103,4 @@ services:
     ports:
       - "${PORT:-8191}:8191"
     restart: unless-stopped
+

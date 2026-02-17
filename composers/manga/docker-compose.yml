@@ -1,32 +1,23 @@
 services:
   suwayomi:
-    image: ghcr.io/suwayomi/suwayomi-server:preview
-    user: 1000:1000
+    image: ghcr.io/suwayomi/suwayomi-server:stable
     environment:
       - TZ=Asia/Kolkata
-      - FLARESOLVERR_ENABLED=true
-      - FLARESOLVERR_URL=http://flaresolverr:8191
-      - DATABASE_TYPE=POSTGRESQL
-      - DATABASE_URL=postgresql://suwayomi_postgresql:5432/${POSTGRES_DB}
-      - DATABASE_USERNAME=${POSTGRES_USER}
-      - DATABASE_PASSWORD=${POSTGRES_PASSWORD}
+      - BIND_IP=0.0.0.0
+      - BIND_PORT=4567
+      - DOWNLOAD_AS_CBZ=true
       - EXTENSION_REPOS=["https://raw.githubusercontent.com/keiyoushi/extensions/repo/index.min.json"]
-      - AUTH_MODE=${AUTH_MODE} 
+      # - SOCKS_PROXY_ENABLED=false
+      # - AUTH_MODE=basic_auth
+      # - AUTH_USERNAME=manga
+      # - AUTH_PASSWORD=hello123
+
+      # Comment these out if you do not use the flaresolverr container at the bottom of this file
+      # - FLARESOLVERR_ENABLED=true
+      # - FLARESOLVERR_URL=http://flaresolverr:8191
     volumes:
-      - ~/data/suwayomi/data:/home/suwayomi/.local/share/Tachidesk
-      - /hdd/Media/manga/:/home/suwayomi/.local/share/Tachidesk/downloads
+      - ~/data/manga/:/home/suwayomi/.local/share/Tachidesk
+      - /hdd/Media/manga/:/downloads
     ports:
       - "4567:4567"
     restart: on-failure:3
-
-  suwayomi_postgresql:
-    container_name: postgresql
-    image: postgres:17.6-alpine
-    environment:
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      PGDATA: /data/postgres
-      POSTGRES_DB: ${POSTGRES_DB}
-    volumes:
-      - ~/data/suwayomi/db/:/data/postgres
-    restart: unless-stopped

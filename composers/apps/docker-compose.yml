@@ -11,8 +11,7 @@ services:
       - TORRENTING_PORT=6881
     volumes:
       - ~/data/qbittorrent/:/config
-      - /hdd/Downloads:/downloads
-      - /hdd/Media:/Media
+      - /hdd/:/hdd/
     ports:
       - 8080:8080
       - 6881:6881

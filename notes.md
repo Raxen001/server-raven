@@ -77,3 +77,8 @@ Add `lyrics` to the `plugins` key in the `beets.conf`
 ```bash
 sudo ufw allow 19999 comment 'Add netdata to firewall rule'
 ```
+
+# trakt.tv
+
+The list is imported by radarr and sonarr every 12 hours and `to-watch` are
+automatically monitored and downloaded
