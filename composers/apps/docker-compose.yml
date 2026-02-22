@@ -30,15 +30,15 @@ services:
          - '8788:3001'
     restart: unless-stopped
 
-  excalidraw:
-    image: excalidraw/excalidraw:latest
-    container_name: excalidraw
+  drawio:
+    container_name: drawio
+    image: jgraph/drawio
     environment:
       - PUID=1000
       - PGID=1000
       - TZ=Asia/Kolkata
     ports:
-      - "5000:80"
+      - 9891:8080
     restart: unless-stopped
 
 
